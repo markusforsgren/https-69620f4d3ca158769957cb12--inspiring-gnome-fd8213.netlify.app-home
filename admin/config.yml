@@ -1,0 +1,61 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "images"
+public_folder: "/images"
+
+collections:
+  - name: "settings"
+    label: "Sidinställningar"
+    files:
+      - label: "Hero Sektion"
+        name: "hero"
+        file: "content/hero.json"
+        fields:
+          - {label: "Huvudrubrik", name: "title", widget: "string", default: "TRYGGMAN"}
+          - {label: "Underrubrik", name: "tagline", widget: "string", default: "Där trygghet skapas"}
+          - {label: "Intro text stycke 1", name: "intro1", widget: "text"}
+          - {label: "Intro text stycke 2", name: "intro2", widget: "text"}
+      
+      - label: "Färger"
+        name: "colors"
+        file: "content/colors.json"
+        fields:
+          - {label: "Huvudfärg (blå-grå)", name: "primary", widget: "string", default: "#5d7a82"}
+          - {label: "Accentfärg (orange)", name: "accent", widget: "string", default: "#e8a87c"}
+          - {label: "Textfärg", name: "text", widget: "string", default: "#2c3e50"}
+
+  - name: "articles"
+    label: "Artiklar"
+    folder: "content/articles"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "Rubrik", name: "title", widget: "string"}
+      - {label: "Bild", name: "image", widget: "image", required: false}
+      - {label: "Beskrivning", name: "description", widget: "text"}
+      - {label: "Länk", name: "link", widget: "string", default: "#"}
+      - {label: "Publicerad", name: "published", widget: "boolean", default: true}
+
+  - name: "sponsors"
+    label: "Sponsorer"
+    folder: "content/sponsors"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "Sponsor namn", name: "name", widget: "string"}
+      - {label: "Logo", name: "logo", widget: "image"}
+      - {label: "Webbplats", name: "website", widget: "string", required: false}
+      - {label: "Ordning", name: "order", widget: "number", default: 1}
+
+  - name: "resources"
+    label: "Resurser"
+    folder: "content/resources"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "Namn", name: "name", widget: "string"}
+      - {label: "Telefon", name: "phone", widget: "string"}
+      - {label: "Beskrivning", name: "description", widget: "text"}
+      - {label: "Ordning", name: "order", widget: "number", default: 1}
