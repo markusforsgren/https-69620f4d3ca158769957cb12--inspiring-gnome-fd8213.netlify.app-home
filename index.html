@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tryggman - Där trygghet skapas</title>
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
     <style>
         * {
             margin: 0;
@@ -192,53 +193,6 @@
             line-height: 2;
         }
 
-        .image-text-section {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-            margin: 5rem 0;
-        }
-
-        .image-placeholder {
-            background: linear-gradient(135deg, #7a9299 30%, #5d7a82 100%);
-            border-radius: 20px;
-            min-height: 400px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.1rem;
-            text-align: center;
-            padding: 2rem;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.15);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .image-placeholder:before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
-        }
-
-        .text-content h3 {
-            color: #4a6169;
-            font-size: 2rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .text-content p {
-            font-size: 1.1rem;
-            margin-bottom: 1.2rem;
-            color: #5a6c7d;
-            line-height: 1.9;
-        }
-
         .stats {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -315,184 +269,30 @@
             font-size: 1.05rem;
         }
 
-        .app-section {
-            background: linear-gradient(135deg, #5d7a82 0%, #4a6169 100%);
+        .image-placeholder {
+            background: linear-gradient(135deg, #7a9299 30%, #5d7a82 100%);
+            border-radius: 20px;
+            min-height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             color: white;
-            border-radius: 30px;
-            padding: 5rem;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+            font-size: 1.1rem;
+            text-align: center;
+            padding: 2rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.15);
             position: relative;
             overflow: hidden;
         }
 
-        .app-section:before {
+        .image-placeholder:before {
             content: '';
             position: absolute;
             top: -50%;
-            right: -20%;
-            width: 500px;
-            height: 500px;
-            background: radial-gradient(circle, rgba(232, 168, 124, 0.15) 0%, transparent 70%);
-            border-radius: 50%;
-        }
-
-        .app-section h2 {
-            color: white;
-        }
-
-        .app-section h2:after {
-            background: linear-gradient(90deg, #e8a87c 0%, #ffffff 100%);
-        }
-
-        .app-intro {
-            text-align: center;
-            max-width: 800px;
-            margin: 0 auto 4rem;
-            font-size: 1.2rem;
-            line-height: 2;
-        }
-
-        .app-features {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2.5rem;
-            margin-top: 4rem;
-        }
-
-        .feature {
-            background: rgba(255,255,255,0.1);
-            padding: 2.5rem;
-            border-radius: 15px;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255,255,255,0.2);
-            transition: all 0.3s;
-        }
-
-        .feature:hover {
-            background: rgba(255,255,255,0.15);
-            transform: translateY(-5px);
-        }
-
-        .feature h4 {
-            font-size: 1.3rem;
-            margin-bottom: 1rem;
-            color: #e8a87c;
-        }
-
-        .feature p {
-            line-height: 1.8;
-        }
-
-        .quote-section {
-            background: linear-gradient(135deg, #4a6169 0%, #5d7a82 100%);
-            color: white;
-            padding: 5rem 3rem;
-            margin: 5rem 0;
-            border-radius: 20px;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .quote-section:before {
-            content: '"';
-            position: absolute;
-            top: 20px;
-            left: 40px;
-            font-size: 150px;
-            opacity: 0.1;
-            font-family: Georgia, serif;
-        }
-
-        .quote-section blockquote {
-            font-size: 1.6rem;
-            font-style: italic;
-            max-width: 900px;
-            margin: 0 auto 2rem;
-            position: relative;
-            line-height: 2;
-        }
-
-        .quote-section cite {
-            font-size: 1.1rem;
-            opacity: 0.9;
-            font-style: normal;
-        }
-
-        .resources-list {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2.5rem;
-            margin-top: 3rem;
-        }
-
-        .resource-item {
-            background: white;
-            padding: 2.5rem;
-            border-left: 5px solid #e8a87c;
-            border-radius: 10px;
-            box-shadow: 0 8px 30px rgba(0,0,0,0.1);
-            transition: all 0.3s;
-        }
-
-        .resource-item:hover {
-            transform: translateX(5px);
-            box-shadow: 0 10px 40px rgba(0,0,0,0.15);
-        }
-
-        .resource-item h4 {
-            color: #4a6169;
-            margin-bottom: 1rem;
-            font-size: 1.3rem;
-        }
-
-        .resource-item p {
-            margin-bottom: 0.5rem;
-            color: #5a6c7d;
-        }
-
-        .resource-item strong {
-            color: #e8a87c;
-            font-size: 1.2rem;
-        }
-
-        .crisis-box {
-            margin-top: 4rem;
-            padding: 3rem;
-            background: linear-gradient(135deg, #fff3cd 0%, #ffe9a8 100%);
-            border-radius: 15px;
-            border-left: 6px solid #ff9800;
-            box-shadow: 0 8px 30px rgba(255, 152, 0, 0.2);
-        }
-
-        .crisis-box h3 {
-            color: #856404;
-            margin-bottom: 1.5rem;
-            font-size: 1.8rem;
-        }
-
-        .crisis-box p {
-            color: #856404;
-            font-size: 1.15rem;
-            line-height: 1.9;
-        }
-
-        .contact-section {
-            background: linear-gradient(180deg, #faf8f5 0%, #ffffff 100%);
-            padding: 6rem 2rem;
-            text-align: center;
-        }
-
-        .contact-content {
-            max-width: 700px;
-            margin: 0 auto;
-        }
-
-        .contact-content p {
-            font-size: 1.2rem;
-            color: #5a6c7d;
-            margin: 2rem 0;
-            line-height: 1.9;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
         }
 
         footer {
@@ -521,15 +321,6 @@
                 padding: 3rem 1.5rem;
             }
 
-            .image-text-section {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-
-            .app-section {
-                padding: 3rem 2rem;
-            }
-
             h2 {
                 font-size: 2rem;
             }
@@ -543,8 +334,9 @@
             <ul class="nav-links">
                 <li><a href="#home">Hem</a></li>
                 <li><a href="#om">Om oss</a></li>
-                <li><a href="#varfor">Varför Tryggman</a></li>
+                <li><a href="#artiklar">Artiklar</a></li>
                 <li><a href="#app">Appen</a></li>
+                <li><a href="#sponsorer">Sponsorer</a></li>
                 <li><a href="#resurser">Resurser</a></li>
                 <li><a href="#kontakt">Kontakt</a></li>
             </ul>
@@ -593,184 +385,133 @@
                 <p>Män upplever psykisk ohälsa någon gång i livet</p>
             </div>
         </div>
-
-        <div class="image-text-section">
-            <div class="image-placeholder">
-                <div style="position: relative; z-index: 1;">
-                    <p style="font-size: 1.3rem; margin-bottom: 1rem;">📊</p>
-                    <p><strong>Här kan du lägga in:</strong><br>
-                    Infografik om statistik<br>
-                    Foto på en man i eftertänksam stämning<br>
-                    Bild på en stödjande miljö</p>
-                </div>
-            </div>
-            <div class="text-content">
-                <h3>Varför pratar vi inte?</h3>
-                <p>
-                    Från tidig ålder lär sig många män att "hålla masken" och att visa känslor är ett tecken 
-                    på svaghet. Vi växer upp med förväntningar om att alltid vara starka, att klara oss själva, 
-                    att aldrig visa sårbarhet.
-                </p>
-                <p>
-                    Men det är just denna tystnad som dödar. När män inte pratar om sina känslor, när de inte 
-                    söker hjälp i tid, eskalerar problemen. Depression, ångest, missbruk och i värsta fall självmord 
-                    blir konsekvenserna av en kultur som säger att "riktiga män" inte behöver hjälp.
-                </p>
-                <p>
-                    <strong>Vi vill förändra detta.</strong> Att be om hjälp är inte svaghet - det är det modigaste 
-                    du kan göra.
-                </p>
-            </div>
-        </div>
-
-        <div class="image-text-section" style="direction: rtl;">
-            <div class="image-placeholder">
-                <div style="position: relative; z-index: 1;">
-                    <p style="font-size: 1.3rem; margin-bottom: 1rem;">🤝</p>
-                    <p><strong>Här kan du lägga in:</strong><br>
-                    Foto på män i gemenskap<br>
-                    Bild på stödjande samtal<br>
-                    Illustration av sammanhållning</p>
-                </div>
-            </div>
-            <div class="text-content" style="direction: ltr;">
-                <h3>Du är inte ensam</h3>
-                <p>
-                    Det kan kännas så när du ligger vaken om natten med ångest, när du kämpar med att ta dig 
-                    ur sängen på morgonen, eller när du känner dig tom och meningslös. Men sanningen är att 
-                    hundratusentals män i Sverige känner precis som du.
-                </p>
-                <p>
-                    Många av dem har redan hittat vägen framåt. De har lärt sig att det är okej att inte vara okej, 
-                    att det är okej att prata om sina känslor, och att söka hjälp är ett tecken på styrka, inte svaghet.
-                </p>
-                <p>
-                    Genom att dela våra erfarenheter, genom att stötta varandra och genom att bryta tystnaden 
-                    tillsammans, skapar vi en ny norm där mäns psykiska hälsa tas på allvar.
-                </p>
-            </div>
-        </div>
     </section>
 
-    <section class="quote-section">
-        <blockquote>
-            "Jag trodde att jag var ensam om att känna så här. Att prata om det var det svåraste 
-            jag någonsin gjort, men också det viktigaste. Idag mår jag bättre, och jag vet att 
-            det är okej att inte alltid vara stark."
-        </blockquote>
-        <cite>— Marcus, 34 år</cite>
-    </section>
-
-    <section id="varfor">
-        <h2>Varför Tryggman?</h2>
+    <section id="artiklar" class="section-warm">
+        <h2>Artiklar & Kunskap</h2>
         <p class="intro-text">
-            Vi vet att det kan vara svårt att ta första steget. Därför har vi skapat en plattform 
-            som möter dig där du är, med verktyg och stöd anpassat för män som vill ta hand om sin 
-            psykiska hälsa.
+            Lär dig mer om psykisk hälsa, få tips och läs inspirerande berättelser från andra män.
         </p>
 
         <div class="info-grid">
             <div class="info-card">
-                <h3>🛡️ Trygghet först</h3>
+                <div class="image-placeholder" style="min-height: 200px; margin-bottom: 1.5rem;">
+                    <div style="position: relative; z-index: 1;">
+                        <p style="font-size: 1.3rem;">📰</p>
+                        <p><small>Artikelbild här</small></p>
+                    </div>
+                </div>
+                <h3>5 tecken på att du behöver prata med någon</h3>
                 <p>
-                    Vi skapar en säker miljö där du kan vara sårbar utan att dömas. Alla delar av vår 
-                    plattform är utformade med din integritet och trygghet i fokus. Du bestämmer själv 
-                    vad du vill dela och med vem.
+                    Många män ignorerar varningssignaler tills det är för sent. Här är fem tecken 
+                    som visar att det är dags att söka hjälp och stöd.
                 </p>
-                <p style="margin-top: 1rem;">
-                    Din resa mot bättre psykisk hälsa börjar här, i din egen takt, på dina villkor.
-                </p>
+                <a href="#" style="color: #e8a87c; font-weight: bold; text-decoration: none;">Läs mer →</a>
             </div>
+
             <div class="info-card">
-                <h3>💬 Bryt tystnaden</h3>
+                <div class="image-placeholder" style="min-height: 200px; margin-bottom: 1.5rem;">
+                    <div style="position: relative; z-index: 1;">
+                        <p style="font-size: 1.3rem;">💪</p>
+                        <p><small>Artikelbild här</small></p>
+                    </div>
+                </div>
+                <h3>Mindfulness för män - så kommer du igång</h3>
                 <p>
-                    Att prata om känslor är inte ett tecken på svaghet - det är ett tecken på styrka och 
-                    självinsikt. Vi hjälper dig att hitta ord för det du känner, oavsett om det är första 
-                    gången eller om du redan är van vid att prata om ditt mående.
+                    Meditation behöver inte vara komplicerat. En praktisk guide för dig som vill 
+                    prova mindfulness men inte vet var du ska börja.
                 </p>
-                <p style="margin-top: 1rem;">
-                    Här finns ingen press, ingen dom, bara genuint stöd och förståelse.
-                </p>
+                <a href="#" style="color: #e8a87c; font-weight: bold; text-decoration: none;">Läs mer →</a>
             </div>
+
             <div class="info-card">
-                <h3>🤝 Gemenskap som stärker</h3>
+                <div class="image-placeholder" style="min-height: 200px; margin-bottom: 1.5rem;">
+                    <div style="position: relative; z-index: 1;">
+                        <p style="font-size: 1.3rem;">🗣️</p>
+                        <p><small>Artikelbild här</small></p>
+                    </div>
+                </div>
+                <h3>"Jag var inte ensam - min historia"</h3>
                 <p>
-                    Du är inte ensam. Tusentals män har samma upplevelser, tankar och utmaningar som du. 
-                    I vår community delar män sina historier, ger varandra råd och stöttar varandra genom 
-                    både upp- och nedgångar.
+                    Johan, 42, delar sin resa från depression till återhämtning. En berättelse 
+                    om mod, sårbarhet och vägen tillbaka till livet.
                 </p>
-                <p style="margin-top: 1rem;">
-                    Tillsammans är vi starkare. Tillsammans bryter vi stigmat.
-                </p>
-            </div>
-            <div class="info-card">
-                <h3>🎯 Evidensbaserade verktyg</h3>
-                <p>
-                    Alla våra verktyg och övningar är baserade på beprövad forskning inom psykologi och 
-                    mental hälsa. Vi samarbetar med psykologer och terapeuter för att säkerställa att du 
-                    får det bästa stödet.
-                </p>
-                <p style="margin-top: 1rem;">
-                    Från KBT-övningar till mindfulness - allt är utformat för att verkligen göra skillnad.
-                </p>
-            </div>
-            <div class="info-card">
-                <h3>📱 Alltid tillgängligt</h3>
-                <p>
-                    Psykisk ohälsa följer ingen arbetstid. Därför är våra verktyg tillgängliga dygnet runt, 
-                    alla dagar om året. När du behöver stöd - oavsett om det är mitt i natten eller på väg 
-                    till jobbet - finns vi där.
-                </p>
-                <p style="margin-top: 1rem;">
-                    Din psykiska hälsa väntar inte, och det ska inte heller vårt stöd göra.
-                </p>
-            </div>
-            <div class="info-card">
-                <h3>🔒 Anonymitet & integritet</h3>
-                <p>
-                    Vi förstår att många män känner sig mer bekväma att söka hjälp anonymt. Därför kan du 
-                    använda alla våra tjänster helt anonymt om du vill. Din data är krypterad och aldrig 
-                    delas med tredje part.
-                </p>
-                <p style="margin-top: 1rem;">
-                    Din integritet är helig för oss.
-                </p>
+                <a href="#" style="color: #e8a87c; font-weight: bold; text-decoration: none;">Läs mer →</a>
             </div>
         </div>
     </section>
 
     <section id="app">
-        <div class="app-section">
-            <h2>Tryggman Appen - Din dagliga följeslagare</h2>
-            <div class="app-intro">
-                <p>
-                    Vi håller på att utveckla en app som kommer att revolutionera hur män tar hand om sin 
-                    psykiska hälsa. En app som är mer än bara ett verktyg - det är en följeslagare som finns 
-                    där för dig varje dag, som hjälper dig förstå ditt mående och ger dig konkreta verktyg 
-                    för att må bättre.
-                </p>
-                <p style="margin-top: 1.5rem;">
-                    Appen kombinerar det bästa från modern psykologi, teknologi och genuint mänskligt stöd. 
-                    Allt i en lättanvänd app som är designad specifikt för män.
-                </p>
+        <h2>Tryggman Appen</h2>
+        <p class="intro-text">
+            Vi håller på att utveckla en app som kommer att revolutionera hur män tar hand om sin 
+            psykiska hälsa. Bli en av de första att testa!
+        </p>
+        <div style="text-align: center;">
+            <a href="#kontakt" class="cta-button">Registrera intresse</a>
+        </div>
+    </section>
+
+    <section id="sponsorer">
+        <h2>Våra Sponsorer & Partners</h2>
+        <p class="intro-text">
+            Vi är stolta över att samarbeta med organisationer som delar vår vision om bättre 
+            psykisk hälsa för män.
+        </p>
+        <div style="text-align: center; margin-top: 4rem;">
+            <p style="color: #5a6c7d; font-size: 1.1rem;">Sponsorer kommer snart...</p>
+        </div>
+    </section>
+
+    <section id="resurser">
+        <h2>Resurser & Hjälp</h2>
+        <p class="intro-text">
+            Det är okej att inte må bra. Det är okej att be om hjälp. Här hittar du viktiga resurser och kontaktuppgifter.
+        </p>
+        <div class="info-grid">
+            <div class="info-card">
+                <h3>Mind Självmordslinjen</h3>
+                <p><strong style="color: #e8a87c;">Telefon: 90101</strong></p>
+                <p>Öppet alla dagar 12:00-22:00. Anonymt och gratis.</p>
             </div>
-
-            <div class="image-placeholder" style="margin: 3rem 0;">
-                <div style="position: relative; z-index: 1;">
-                    <p style="font-size: 1.3rem; margin-bottom: 1rem;">📱</p>
-                    <p><strong>Här kan du lägga in:</strong><br>
-                    Mockup av appen<br>
-                    Screenshots av appens gränssnitt<br>
-                    Video demo av funktioner</p>
-                </div>
+            <div class="info-card">
+                <h3>1177 Vårdguiden</h3>
+                <p><strong style="color: #e8a87c;">Telefon: 1177</strong></p>
+                <p>Sjuksköterskor som ger råd och hänvisar vidare vid behov.</p>
             </div>
+            <div class="info-card">
+                <h3>BRIS för vuxna</h3>
+                <p><strong style="color: #e8a87c;">Telefon: 116 111</strong></p>
+                <p>Stöd och rådgivning för unga vuxna.</p>
+            </div>
+        </div>
+    </section>
 
-            <h3 style="text-align: center; font-size: 2rem; margin: 4rem 0 2rem; color: #e8a87c;">
-                Funktioner som gör skillnad
-            </h3>
+    <section id="kontakt" class="section-warm">
+        <h2>Kontakta oss</h2>
+        <p class="intro-text">
+            Vill du veta mer om Tryggman eller vår app? Har du frågor eller feedback? Hör av dig till oss!
+        </p>
+        <p style="text-align: center; font-size: 1.2rem; color: #4a6169;">
+            <strong>Email:</strong> info@tryggman.se
+        </p>
+    </section>
 
-            <div class="app-features">
-                <div class="feature">
-                    <h4>📊 Intelligent Moodtracking</h4>
-                    <p>
-                        Följ ditt mående över tid och identifiera mönster.
+    <footer>
+        <p>&copy; 2026 Tryggman. Där trygghet skapas.</p>
+        <p style="margin-top: 1rem; opacity: 0.8;">Tillsammans bryter vi tystnaden kring mäns psykiska hälsa.</p>
+    </footer>
+
+    <script>
+      if (window.netlifyIdentity) {
+        window.netlifyIdentity.on("init", user => {
+          if (!user) {
+            window.netlifyIdentity.on("login", () => {
+              document.location.href = "/admin/";
+            });
+          }
+        });
+      }
+    </script>
+</body>
+</html>
