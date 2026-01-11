@@ -6,367 +6,86 @@
     <title>Tryggman - Där trygghet skapas</title>
     <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.8;
-            color: #2c3e50;
-        }
-
-        header {
-            background: linear-gradient(135deg, #5d7a82 0%, #4a6169 100%);
-            color: white;
-            padding: 1.5rem 0;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
-        }
-
-        nav {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 2rem;
-        }
-
-        .logo {
-            font-size: 1.8rem;
-            font-weight: bold;
-            letter-spacing: 3px;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 2.5rem;
-            list-style: none;
-        }
-
-        .nav-links a {
-            color: white;
-            text-decoration: none;
-            font-weight: 500;
-            transition: all 0.3s;
-            position: relative;
-        }
-
-        .nav-links a:after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: #e8a87c;
-            transition: width 0.3s;
-        }
-
-        .nav-links a:hover:after {
-            width: 100%;
-        }
-
-        .hero {
-            background: linear-gradient(135deg, rgba(93, 122, 130, 0.95) 0%, rgba(74, 97, 105, 0.95) 100%),
-                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%235d7a82" width="1200" height="600"/><path fill="%234a6169" opacity="0.3" d="M0,300 Q300,100 600,300 T1200,300 L1200,600 L0,600 Z"/></svg>');
-            background-size: cover;
-            background-position: center;
-            color: white;
-            padding: 8rem 2rem;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: radial-gradient(circle at 30% 50%, rgba(232, 168, 124, 0.1) 0%, transparent 50%);
-        }
-
-        .hero-content {
-            max-width: 900px;
-            margin: 0 auto;
-            position: relative;
-            z-index: 1;
-        }
-
-        .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1.5rem;
-            letter-spacing: 4px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-        }
-
-        .hero .tagline {
-            font-size: 1.5rem;
-            margin-bottom: 2rem;
-            font-weight: 300;
-            letter-spacing: 2px;
-            color: #e8a87c;
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            margin-bottom: 1rem;
-            opacity: 0.95;
-            line-height: 1.9;
-        }
-
-        .cta-button {
-            display: inline-block;
-            background: linear-gradient(135deg, #e8a87c 0%, #d4956a 100%);
-            color: white;
-            padding: 1.2rem 3rem;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: bold;
-            transition: all 0.3s;
-            margin: 0.5rem;
-            box-shadow: 0 4px 15px rgba(232, 168, 124, 0.3);
-        }
-
-        .cta-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 25px rgba(232, 168, 124, 0.4);
-        }
-
-        .cta-button.secondary {
-            background: transparent;
-            color: white;
-            border: 2px solid rgba(255,255,255,0.8);
-            box-shadow: none;
-        }
-
-        .cta-button.secondary:hover {
-            background: rgba(255,255,255,0.1);
-            border-color: white;
-        }
-
-        section {
-            padding: 6rem 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .section-warm {
-            background: linear-gradient(180deg, #faf8f5 0%, #ffffff 100%);
-        }
-
-        h2 {
-            font-size: 2.8rem;
-            margin-bottom: 1.5rem;
-            text-align: center;
-            color: #4a6169;
-            position: relative;
-            padding-bottom: 1rem;
-        }
-
-        h2:after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background: linear-gradient(90deg, #e8a87c 0%, #d4956a 100%);
-            border-radius: 2px;
-        }
-
-        .intro-text {
-            text-align: center;
-            max-width: 850px;
-            margin: 2rem auto 4rem;
-            font-size: 1.2rem;
-            color: #5a6c7d;
-            line-height: 2;
-        }
-
-        .stats {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 3rem;
-            text-align: center;
-            margin: 5rem 0;
-            padding: 4rem 2rem;
-            background: white;
-            border-radius: 20px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
-        }
-
-        .stat {
-            padding: 2rem;
-            position: relative;
-        }
-
-        .stat:after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 60px;
-            height: 3px;
-            background: linear-gradient(90deg, #e8a87c 0%, #d4956a 100%);
-        }
-
-        .stat-number {
-            font-size: 3.5rem;
-            font-weight: bold;
-            background: linear-gradient(135deg, #5d7a82 0%, #e8a87c 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 1rem;
-        }
-
-        .stat p {
-            font-size: 1.1rem;
-            color: #5a6c7d;
-        }
-
-        .info-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 3rem;
-            margin-top: 4rem;
-        }
-
-        .info-card {
-            background: white;
-            padding: 3rem;
-            border-radius: 20px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
-            transition: all 0.3s;
-            border-top: 4px solid #e8a87c;
-        }
-
-        .info-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 15px 50px rgba(0,0,0,0.12);
-        }
-
-        .info-card h3 {
-            color: #4a6169;
-            margin-bottom: 1.5rem;
-            font-size: 1.6rem;
-        }
-
-        .info-card p {
-            color: #5a6c7d;
-            line-height: 1.9;
-            font-size: 1.05rem;
-            margin-bottom: 1rem;
-        }
-
-        .app-section {
-            background: linear-gradient(135deg, #5d7a82 0%, #4a6169 100%);
-            color: white;
-            border-radius: 30px;
-            padding: 5rem;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.2);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .app-section:before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -20%;
-            width: 500px;
-            height: 500px;
-            background: radial-gradient(circle, rgba(232, 168, 124, 0.15) 0%, transparent 70%);
-            border-radius: 50%;
-        }
-
-        .app-section h2 {
-            color: white;
-        }
-
-        .app-section h2:after {
-            background: linear-gradient(90deg, #e8a87c 0%, #ffffff 100%);
-        }
-
-        .app-section h3 {
-            color: #e8a87c;
-        }
-
-        .app-features {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2.5rem;
-            margin-top: 3rem;
-        }
-
-        .feature {
-            background: rgba(255,255,255,0.1);
-            padding: 2.5rem;
-            border-radius: 15px;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255,255,255,0.2);
-            transition: all 0.3s;
-        }
-
-        .feature:hover {
-            background: rgba(255,255,255,0.15);
-            transform: translateY(-5px);
-        }
-
-        .feature h4 {
-            font-size: 1.3rem;
-            margin-bottom: 1rem;
-            color: #e8a87c;
-        }
-
-        .feature p {
-            line-height: 1.8;
-        }
-
-        footer {
-            background: linear-gradient(135deg, #2d3e45 0%, #1a2a30 100%);
-            color: white;
-            text-align: center;
-            padding: 3rem 2rem;
-        }
-
-        footer p {
-            margin: 0.8rem 0;
-            opacity: 0.9;
-        }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.8; color: #2c3e50; }
+        header { background: linear-gradient(135deg, #5d7a82 0%, #4a6169 100%); color: white; padding: 1.5rem 0; position: sticky; top: 0; z-index: 100; box-shadow: 0 4px 20px rgba(0,0,0,0.15); }
+        nav { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 0 2rem; }
+        .logo { font-size: 1.8rem; font-weight: bold; letter-spacing: 3px; }
+        .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+        .nav-links a { color: white; text-decoration: none; font-weight: 500; transition: all 0.3s; position: relative; }
+        .nav-links a:after { content: ''; position: absolute; bottom: -5px; left: 0; width: 0; height: 2px; background: #e8a87c; transition: width 0.3s; }
+        .nav-links a:hover:after { width: 100%; }
+        .hero { background: linear-gradient(135deg, rgba(93, 122, 130, 0.95) 0%, rgba(74, 97, 105, 0.95) 100%), url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%235d7a82" width="1200" height="600"/><path fill="%234a6169" opacity="0.3" d="M0,300 Q300,100 600,300 T1200,300 L1200,600 L0,600 Z"/></svg>'); background-size: cover; background-position: center; color: white; padding: 8rem 2rem; text-align: center; position: relative; overflow: hidden; }
+        .hero:before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: radial-gradient(circle at 30% 50%, rgba(232, 168, 124, 0.1) 0%, transparent 50%); }
+        .hero-content { max-width: 900px; margin: 0 auto; position: relative; z-index: 1; }
+        .hero h1 { font-size: 3.5rem; margin-bottom: 1.5rem; letter-spacing: 4px; text-shadow: 2px 2px 4px rgba(0,0,0,0.3); }
+        .hero .tagline { font-size: 1.5rem; margin-bottom: 2rem; font-weight: 300; letter-spacing: 2px; color: #e8a87c; }
+        .hero p { font-size: 1.2rem; margin-bottom: 1rem; opacity: 0.95; line-height: 1.9; }
+        .cta-button { display: inline-block; background: linear-gradient(135deg, #e8a87c 0%, #d4956a 100%); color: white; padding: 1.2rem 3rem; text-decoration: none; border-radius: 50px; font-weight: bold; transition: all 0.3s; margin: 0.5rem; box-shadow: 0 4px 15px rgba(232, 168, 124, 0.3); cursor: pointer; border: none; font-size: 1rem; }
+        .cta-button:hover { transform: translateY(-3px); box-shadow: 0 6px 25px rgba(232, 168, 124, 0.4); }
+        .cta-button.secondary { background: transparent; color: white; border: 2px solid rgba(255,255,255,0.8); box-shadow: none; }
+        .cta-button.secondary:hover { background: rgba(255,255,255,0.1); border-color: white; }
+        section { padding: 6rem 2rem; max-width: 1200px; margin: 0 auto; }
+        .section-warm { background: linear-gradient(180deg, #faf8f5 0%, #ffffff 100%); }
+        h2 { font-size: 2.8rem; margin-bottom: 1.5rem; text-align: center; color: #4a6169; position: relative; padding-bottom: 1rem; }
+        h2:after { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 80px; height: 4px; background: linear-gradient(90deg, #e8a87c 0%, #d4956a 100%); border-radius: 2px; }
+        h3 { font-size: 2rem; color: #4a6169; margin-bottom: 1.5rem; }
+        .intro-text { text-align: center; max-width: 850px; margin: 2rem auto 4rem; font-size: 1.2rem; color: #5a6c7d; line-height: 2; }
+        .content-text { max-width: 850px; margin: 2rem auto; font-size: 1.15rem; color: #5a6c7d; line-height: 2; }
+        .content-text p { margin-bottom: 1.5rem; }
+        .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 3rem; text-align: center; margin: 5rem 0; padding: 4rem 2rem; background: white; border-radius: 20px; box-shadow: 0 10px 40px rgba(0,0,0,0.08); }
+        .stat { padding: 2rem; position: relative; }
+        .stat:after { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 60px; height: 3px; background: linear-gradient(90deg, #e8a87c 0%, #d4956a 100%); }
+        .stat-number { font-size: 3.5rem; font-weight: bold; background: linear-gradient(135deg, #5d7a82 0%, #e8a87c 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 1rem; }
+        .stat p { font-size: 1.1rem; color: #5a6c7d; }
+        .info-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 3rem; margin-top: 4rem; }
+        .info-card { background: white; padding: 3rem; border-radius: 20px; box-shadow: 0 10px 40px rgba(0,0,0,0.08); transition: all 0.3s; border-top: 4px solid #e8a87c; }
+        .info-card:hover { transform: translateY(-8px); box-shadow: 0 15px 50px rgba(0,0,0,0.12); }
+        .info-card h3 { color: #4a6169; margin-bottom: 1.5rem; font-size: 1.6rem; }
+        .info-card p { color: #5a6c7d; line-height: 1.9; font-size: 1.05rem; margin-bottom: 1rem; }
+        .image-placeholder { background: linear-gradient(135deg, #7a9299 30%, #5d7a82 100%); border-radius: 20px; min-height: 400px; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.1rem; text-align: center; padding: 2rem; box-shadow: 0 10px 40px rgba(0,0,0,0.15); position: relative; overflow: hidden; }
+        .image-placeholder:before { content: ''; position: absolute; top: -50%; right: -50%; width: 200%; height: 200%; background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%); }
+        .image-text-section { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; margin: 5rem 0; }
+        .text-content h3 { color: #4a6169; font-size: 2rem; margin-bottom: 1.5rem; }
+        .text-content p { font-size: 1.1rem; margin-bottom: 1.5rem; color: #5a6c7d; line-height: 2; }
+        .quote-section { background: linear-gradient(135deg, #4a6169 0%, #5d7a82 100%); color: white; padding: 5rem 3rem; margin: 5rem 0; border-radius: 20px; text-align: center; position: relative; overflow: hidden; }
+        .quote-section:before { content: '"'; position: absolute; top: 20px; left: 40px; font-size: 150px; opacity: 0.1; font-family: Georgia, serif; }
+        .quote-section blockquote { font-size: 1.6rem; font-style: italic; max-width: 900px; margin: 0 auto 2rem; position: relative; line-height: 2; }
+        .quote-section cite { font-size: 1.1rem; opacity: 0.9; font-style: normal; }
+        .story-box { background: linear-gradient(135deg, #fff8f0 0%, #fef5eb 100%); padding: 3rem; border-radius: 20px; margin: 3rem 0; border-left: 5px solid #e8a87c; box-shadow: 0 5px 20px rgba(232, 168, 124, 0.15); }
+        .story-box h4 { color: #4a6169; font-size: 1.4rem; margin-bottom: 1.5rem; }
+        .story-box p { color: #5a6c7d; line-height: 2; font-size: 1.1rem; margin-bottom: 1.2rem; }
+        .app-section { background: linear-gradient(135deg, #5d7a82 0%, #4a6169 100%); color: white; border-radius: 30px; padding: 5rem; box-shadow: 0 20px 60px rgba(0,0,0,0.2); position: relative; overflow: hidden; }
+        .app-section:before { content: ''; position: absolute; top: -50%; right: -20%; width: 500px; height: 500px; background: radial-gradient(circle, rgba(232, 168, 124, 0.15) 0%, transparent 70%); border-radius: 50%; }
+        .app-section h2 { color: white; }
+        .app-section h2:after { background: linear-gradient(90deg, #e8a87c 0%, #ffffff 100%); }
+        .app-section h3 { color: #e8a87c; }
+        .app-features { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2.5rem; margin-top: 3rem; }
+        .feature { background: rgba(255,255,255,0.1); padding: 2.5rem; border-radius: 15px; backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.2); transition: all 0.3s; }
+        .feature:hover { background: rgba(255,255,255,0.15); transform: translateY(-5px); }
+        .feature h4 { font-size: 1.3rem; margin-bottom: 1rem; color: #e8a87c; }
+        .feature p { line-height: 1.8; }
+        .modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.8); }
+        .modal-content { background: white; margin: 5% auto; padding: 3rem; border-radius: 20px; width: 90%; max-width: 800px; position: relative; max-height: 80vh; overflow-y: auto; }
+        .modal-content h2 { color: #4a6169; margin-bottom: 2rem; }
+        .modal-content h3 { color: #5d7a82; font-size: 1.5rem; margin-top: 2rem; margin-bottom: 1rem; }
+        .modal-content p { color: #5a6c7d; line-height: 1.9; margin-bottom: 1rem; }
+        .modal-content ul, .modal-content ol { color: #5a6c7d; line-height: 1.9; margin-left: 2rem; margin-bottom: 1rem; }
+        .close { color: #aaa; float: right; font-size: 28px; font-weight: bold; cursor: pointer; line-height: 20px; }
+        .close:hover { color: #000; }
+        .social-links { display: flex; gap: 1.5rem; justify-content: center; margin-top: 2rem; }
+        .social-links a { color: white; font-size: 1.5rem; transition: all 0.3s; opacity: 0.8; text-decoration: none; }
+        .social-links a:hover { opacity: 1; transform: translateY(-3px); }
+        footer { background: linear-gradient(135deg, #2d3e45 0%, #1a2a30 100%); color: white; text-align: center; padding: 3rem 2rem; }
+        footer p { margin: 0.8rem 0; opacity: 0.9; }
         @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2.2rem;
-            }
-            
-            .nav-links {
-                flex-direction: column;
-                gap: 1rem;
-            }
-            
-            section {
-                padding: 3rem 1.5rem;
-            }
-
-            h2 {
-                font-size: 2rem;
-            }
-
-            .app-section {
-                padding: 3rem 2rem;
-            }
+            .hero h1 { font-size: 2.2rem; }
+            .nav-links { flex-direction: column; gap: 1rem; }
+            section { padding: 3rem 1.5rem; }
+            .image-text-section { grid-template-columns: 1fr; gap: 2rem; }
+            h2 { font-size: 2rem; }
+            .app-section { padding: 3rem 2rem; }
+            .modal-content { width: 95%; padding: 2rem; margin: 10% auto; }
         }
     </style>
 </head>
@@ -377,6 +96,7 @@
             <ul class="nav-links">
                 <li><a href="#home">Hem</a></li>
                 <li><a href="#om">Om oss</a></li>
+                <li><a href="#varfor">Varför vi finns</a></li>
                 <li><a href="#artiklar">Artiklar</a></li>
                 <li><a href="#app">Appen</a></li>
                 <li><a href="#sponsorer">Sponsorer</a></li>
@@ -390,15 +110,8 @@
         <div class="hero-content">
             <h1>TRYGGMAN</h1>
             <p class="tagline">Där trygghet skapas</p>
-            <p>
-                Vi tror på att varje man förtjänar att känna sig trygg med sin psykiska hälsa. 
-                I en värld där män ofta förväntas vara starka och hålla masken, skapar vi ett 
-                utrymme där det är okej att inte vara okej.
-            </p>
-            <p>
-                Tillsammans bryter vi tystnaden och skapar en plattform där män kan söka stöd, 
-                dela erfarenheter och hitta verktyg för ett friskare och mer meningsfullt liv.
-            </p>
+            <p>Vi tror på att varje man förtjänar att känna sig trygg med sin psykiska hälsa. I en värld där män ofta förväntas vara starka och hålla masken, skapar vi ett utrymme där det är okej att inte vara okej.</p>
+            <p>Tillsammans bryter vi tystnaden och skapar en plattform där män kan söka stöd, dela erfarenheter och hitta verktyg för ett friskare och mer meningsfullt liv. För att ingen man ska behöva kämpa ensam.</p>
             <div style="margin-top: 2.5rem;">
                 <a href="#app" class="cta-button">Upptäck appen</a>
                 <a href="#resurser" class="cta-button secondary">Få hjälp nu</a>
@@ -408,60 +121,118 @@
 
     <section id="om" class="section-warm">
         <h2>Psykisk ohälsa bland män - en tyst kris</h2>
-        <p class="intro-text">
-            Varje dag förlorar vi män till psykisk ohälsa. Män som var söner, bröder, pappor och vänner. 
-            Män som kände att de inte kunde prata om sina känslor, som trodde att de måste klara allt själva. 
-            Det är dags att förändra detta.
-        </p>
+        <p class="intro-text">Varje dag förlorar vi män till psykisk ohälsa. Män som var söner, bröder, pappor och vänner. Män som kände att de inte kunde prata om sina känslor, som trodde att de måste klara allt själva. Detta är en kris som drabbar oss alla, men som allt för ofta förblir tyst och osynlig.</p>
+
+        <div class="content-text">
+            <p>Statistiken är skrämmande, men bakom varje siffra finns en människa med en historia, en familj som sörjer, vänner som önskar att de hade sagt något. Vi lever i ett samhälle där män fortfarande förväntas "hålla masken", där känslor ses som svaghet och där att be om hjälp uppfattas som ett misslyckande.</p>
+            <p>Men sanningen är att det krävs otroligt mycket styrka att erkänna när man inte mår bra. Det krävs mod att bryta tystnaden och be om hjälp. Och det är precis den styrkan och det modet vi vill uppmuntra och stötta genom Tryggman.</p>
+        </div>
 
         <div class="stats">
             <div class="stat">
                 <div class="stat-number">3x</div>
-                <p>Fler män än kvinnor tar sitt liv varje år i Sverige</p>
+                <p>Fler män än kvinnor tar sitt liv varje år i Sverige. Detta är inte ett slumpvärde - det är resultatet av stigma, tystnad och bristande stöd.</p>
             </div>
             <div class="stat">
                 <div class="stat-number">70%</div>
-                <p>Av män som mår dåligt söker inte professionell hjälp</p>
+                <p>Av män som mår dåligt söker inte professionell hjälp. Många lider i det tysta tills det är för sent, av rädsla för att dömas eller ses som svaga.</p>
             </div>
             <div class="stat">
                 <div class="stat-number">1 av 4</div>
-                <p>Män upplever psykisk ohälsa någon gång i livet</p>
+                <p>Män upplever psykisk ohälsa någon gång i livet. Det betyder att du, din bror, din pappa, din vän - någon ni känner kämpar just nu.</p>
+            </div>
+        </div>
+
+        <div class="image-text-section">
+            <div class="image-placeholder">
+                <div style="position: relative; z-index: 1;">
+                    <p style="font-size: 1.3rem; margin-bottom: 1rem;">📊</p>
+                    <p><strong>Här kan du lägga in:</strong><br>Infografik om statistik<br>Foto på en man i eftertänksam stämning</p>
+                </div>
+            </div>
+            <div class="text-content">
+                <h3>Varför pratar vi inte?</h3>
+                <p>Från tidig ålder lär sig många män att "hålla masken" och att visa känslor är ett tecken på svaghet. "Pojkar gråter inte." "Ta dig samman." "Var en man." Dessa fraser ekar genom våra uppväxter och formar hur vi förhåller oss till våra egna känslor.</p>
+                <p>Vi växer upp med förväntningar om att alltid vara starka, att klara oss själva, att aldrig visa sårbarhet. På jobbet, hemma, bland kompisar - överallt förväntas vi vara den starka försörjaren, problemlösaren, klippan som andra kan luta sig mot. Men vem ska vi luta oss mot när vi själva behöver stöd?</p>
+                <p>Det är just denna tystnad som dödar. När män inte pratar om sina känslor, när de inte söker hjälp i tid, eskalerar problemen. Depression fördjupas. Ångest blir hanterbar med alkohol eller droger. Tankar blir mörkare.</p>
+                <p><strong>Men det finns alltid en väg ut. Och det första steget är att börja prata.</strong></p>
+            </div>
+        </div>
+
+        <div class="story-box">
+            <h4>💬 Marcus berättelse</h4>
+            <p>"Jag var 35 år gammal när jag insåg att jag inte orkade längre. På ytan hade jag allt - ett bra jobb, en familj, ett hus. Men inombords var jag tom. Varje morgon var en kamp att ta mig ur sängen. Jag drack för att klara av dagarna. Jag skrek åt mina barn för småsaker.</p>
+            <p>Det som räddade mig var en arbetskollega som drog mig åt sidan en dag och sa: 'Du verkar inte må bra. Vill du prata?' Först förnekade jag. Men han lämnade inte. Och till slut brast det. Jag grät för första gången på 15 år.</p>
+            <p>Idag, tre år senare, mår jag bättre. Jag har lärt mig att prata om mina känslor. Jag har insett att det inte är svaghet att be om hjälp - det är det modigaste jag någonsin gjort."</p>
+            <p style="font-style: italic; margin-top: 1.5rem;">— Marcus, 38 år, Stockholm</p>
+        </div>
+
+        <div class="image-text-section" style="direction: rtl;">
+            <div class="image-placeholder">
+                <div style="position: relative; z-index: 1;">
+                    <p style="font-size: 1.3rem; margin-bottom: 1rem;">🤝</p>
+                    <p><strong>Här kan du lägga in:</strong><br>Foto på män i gemenskap<br>Bild på stödjande samtal</p>
+                </div>
+            </div>
+            <div class="text-content" style="direction: ltr;">
+                <h3>Du är inte ensam</h3>
+                <p>Det kan kännas så när du ligger vaken om natten med ångest, när du kämpar med att ta dig ur sängen på morgonen. Men sanningen är att hundratusentals män i Sverige känner precis som du.</p>
+                <p>Genom att dela våra erfarenheter, genom att stötta varandra och genom att bryta tystnaden tillsammans, skapar vi en ny norm. En norm där mäns psykiska hälsa tas på allvar.</p>
+                <p><strong>Och den normen börjar med dig. Med oss. Med Tryggman.</strong></p>
+            </div>
+        </div>
+    </section>
+
+    <section class="quote-section">
+        <blockquote>"Jag trodde att jag var ensam om att känna så här. Att prata om det var det svåraste jag någonsin gjort, men också det viktigaste. Idag mår jag bättre, och jag vet att det är okej att inte alltid vara stark."</blockquote>
+        <cite>— Jonas, 34 år, Göteborg</cite>
+    </section>
+    <section id="varfor">
+        <h2>Varför Tryggman finns</h2>
+        <div class="content-text">
+            <p>Tryggman föddes ur en frustration och en övertygelse. Frustration över att se så många män lida i det tysta. Övertygelse om att det måste finnas ett bättre sätt.</p>
+            <p>Vi såg män som kände sig ensamma trots att de var omgivna av människor. Män som var rädda för att prata om sina känslor. Män som behövde hjälp men inte visste var de skulle vända sig.</p>
+            <p>Därför skapade vi Tryggman - en plattform som möter män där de är. Som gör det lättare att ta första steget. Som finns där när du behöver det.</p>
+        </div>
+
+        <div class="info-grid" style="margin-top: 5rem;">
+            <div class="info-card">
+                <h3>🛡️ Trygghet först</h3>
+                <p>Vi förstår att det krävs mod att vara sårbar. Därför har vi skapat en miljö där du kan vara precis den du är, utan rädsla för att dömas.</p>
+                <p>Din resa mot bättre psykisk hälsa börjar här, i din egen takt, på dina villkor.</p>
+            </div>
+            <div class="info-card">
+                <h3>💬 Bryt tystnaden</h3>
+                <p>Att prata om känslor är inte ett tecken på svaghet - det är ett tecken på styrka och självinsikt. Vi hjälper dig hitta ord för det du känner.</p>
+                <p>Här finns ingen press, ingen dom, bara genuint stöd.</p>
+            </div>
+            <div class="info-card">
+                <h3>🤝 Gemenskap</h3>
+                <p>Tusentals män har samma upplevelser som du. I vår community delar män sina historier och stöttar varandra.</p>
+                <p>Tillsammans är vi starkare. Tillsammans bryter vi stigmat.</p>
             </div>
         </div>
     </section>
 
     <section id="artiklar" class="section-warm">
         <h2>Artiklar & Kunskap</h2>
-        <p class="intro-text">
-            Lär dig mer om psykisk hälsa, få tips och läs inspirerande berättelser från andra män.
-        </p>
+        <p class="intro-text">Lär dig mer om psykisk hälsa, få tips och läs inspirerande berättelser från andra män.</p>
 
         <div class="info-grid">
             <div class="info-card">
                 <h3>5 tecken på att du behöver prata med någon</h3>
-                <p>
-                    Många män ignorerar varningssignaler tills det är för sent. Här är fem tecken 
-                    som visar att det är dags att söka hjälp och stöd.
-                </p>
-                <a href="#" style="color: #e8a87c; font-weight: bold; text-decoration: none;">Läs mer →</a>
+                <p>Många män ignorerar varningssignaler tills det är för sent. Här är fem tecken som visar att det är dags att söka hjälp och stöd.</p>
+                <a href="#" class="article-link" data-article="1" style="color: #e8a87c; font-weight: bold; text-decoration: none; cursor: pointer;">Läs mer →</a>
             </div>
-
             <div class="info-card">
                 <h3>Mindfulness för män - så kommer du igång</h3>
-                <p>
-                    Meditation behöver inte vara komplicerat. En praktisk guide för dig som vill 
-                    prova mindfulness men inte vet var du ska börja.
-                </p>
-                <a href="#" style="color: #e8a87c; font-weight: bold; text-decoration: none;">Läs mer →</a>
+                <p>Meditation behöver inte vara komplicerat. En praktisk guide för dig som vill prova mindfulness men inte vet var du ska börja.</p>
+                <a href="#" class="article-link" data-article="2" style="color: #e8a87c; font-weight: bold; text-decoration: none; cursor: pointer;">Läs mer →</a>
             </div>
-
             <div class="info-card">
                 <h3>"Jag var inte ensam - min historia"</h3>
-                <p>
-                    Johan, 42, delar sin resa från depression till återhämtning. En berättelse 
-                    om mod, sårbarhet och vägen tillbaka till livet.
-                </p>
-                <a href="#" style="color: #e8a87c; font-weight: bold; text-decoration: none;">Läs mer →</a>
+                <p>Johan, 42, delar sin resa från depression till återhämtning. En berättelse om mod, sårbarhet och vägen tillbaka till livet.</p>
+                <a href="#" class="article-link" data-article="3" style="color: #e8a87c; font-weight: bold; text-decoration: none; cursor: pointer;">Läs mer →</a>
             </div>
         </div>
     </section>
@@ -470,150 +241,92 @@
         <div class="app-section">
             <h2>Tryggman Appen - Lanseras 1 februari 2026</h2>
             <div style="max-width: 800px; margin: 0 auto; text-align: center; position: relative; z-index: 1;">
-                <p style="font-size: 1.3rem; margin-bottom: 2rem; line-height: 2;">
-                    Vi håller på att utveckla en app som kommer att revolutionera hur män tar hand om sin 
-                    psykiska hälsa. En app som är mer än bara ett verktyg - det är en följeslagare som finns 
-                    där för dig varje dag.
-                </p>
-                <p style="font-size: 1.2rem; margin-bottom: 3rem; color: #e8a87c; font-weight: bold;">
-                    📅 Preliminär lansering: 1 februari 2026
-                </p>
+                <p style="font-size: 1.3rem; margin-bottom: 2rem; line-height: 2;">Vi håller på att utveckla en app som kommer att revolutionera hur män tar hand om sin psykiska hälsa. En följeslagare som finns där för dig varje dag.</p>
+                <p style="font-size: 1.2rem; margin-bottom: 3rem; color: #e8a87c; font-weight: bold;">📅 Preliminär lansering: 1 februari 2026</p>
             </div>
 
-            <h3 style="text-align: center; font-size: 2.2rem; margin: 4rem 0 3rem; position: relative; z-index: 1;">
-                Vad appen kommer innehålla
-            </h3>
+            <h3 style="text-align: center; font-size: 2.2rem; margin: 4rem 0 3rem; position: relative; z-index: 1;">Vad appen kommer innehålla</h3>
 
             <div class="app-features">
                 <div class="feature">
                     <h4>👥 Community</h4>
-                    <p>
-                        Anslut dig till en trygg gemenskap av män som delar liknande upplevelser. 
-                        Du är inte ensam.
-                    </p>
+                    <p>Anslut dig till en trygg gemenskap av män som delar liknande upplevelser. Här kan du vara dig själv och stötta andra.</p>
                 </div>
-                
                 <div class="feature">
                     <h4>💬 Expertchatt</h4>
-                    <p>
-                        Få tillgång till professionell hjälp när du behöver det. Chatta med legitimerade 
-                        psykologer och terapeuter.
-                    </p>
+                    <p>Få tillgång till professionell hjälp när du behöver det. Chatta med legitimerade psykologer och terapeuter.</p>
                 </div>
-                
                 <div class="feature">
                     <h4>📚 Artiklar & Kunskap</h4>
-                    <p>
-                        Läs evidensbaserade artiklar om psykisk hälsa och få konkreta tips.
-                    </p>
+                    <p>Läs evidensbaserade artiklar om psykisk hälsa och få konkreta verktyg.</p>
                 </div>
-                
                 <div class="feature">
                     <h4>🗣️ Inlägg från andra män</h4>
-                    <p>
-                        Läs anonyma berättelser från män med liknande problem. Dela dina egna erfarenheter.
-                    </p>
+                    <p>Läs anonyma berättelser från män med liknande problem. Dela dina egna erfarenheter.</p>
                 </div>
-                
                 <div class="feature">
                     <h4>💭 Chattfunktioner</h4>
-                    <p>
-                        Privata chattar med andra användare som förstår vad du går igenom.
-                    </p>
+                    <p>Privata chattar med andra användare som förstår vad du går igenom.</p>
                 </div>
-                
                 <div class="feature">
                     <h4>📊 Moodtracking</h4>
-                    <p>
-                        Följ ditt mående över tid och identifiera mönster i din vardag.
-                    </p>
+                    <p>Följ ditt mående över tid och identifiera mönster.</p>
                 </div>
-                
                 <div class="feature">
                     <h4>🧘 Guidade övningar</h4>
-                    <p>
-                        Mindfulness, andningsövningar och avslappningstekniker.
-                    </p>
+                    <p>Mindfulness, andningsövningar och avslappningstekniker för män.</p>
                 </div>
-                
                 <div class="feature">
                     <h4>🆘 Akut hjälp</h4>
-                    <p>
-                        Direkt tillgång till krislinjer och professionell hjälp när du behöver det.
-                    </p>
+                    <p>Direkt tillgång till krislinjer när du behöver det som mest.</p>
                 </div>
             </div>
 
             <div style="margin-top: 5rem; padding: 4rem; background: rgba(255,255,255,0.1); border-radius: 20px; backdrop-filter: blur(10px); position: relative; z-index: 1;">
-                <h3 style="text-align: center; font-size: 2rem; margin-bottom: 2rem;">
-                    Bli en av de första!
-                </h3>
-                <p style="text-align: center; font-size: 1.2rem; margin-bottom: 3rem; line-height: 2;">
-                    Registrera ditt intresse nu och få tillgång till appen innan alla andra.
-                </p>
+                <h3 style="text-align: center; font-size: 2rem; margin-bottom: 2rem;">Bli en av de första!</h3>
+                <p style="text-align: center; font-size: 1.2rem; margin-bottom: 3rem; line-height: 2;">Registrera ditt intresse nu och få tillgång före alla andra.</p>
 
                 <div style="max-width: 600px; margin: 0 auto; background: white; padding: 3rem; border-radius: 15px; box-shadow: 0 10px 40px rgba(0,0,0,0.2);">
-                    <h4 style="color: #4a6169; text-align: center; margin-bottom: 2rem; font-size: 1.5rem;">
-                        Registrera ditt intresse
-                    </h4>
+                    <h4 style="color: #4a6169; text-align: center; margin-bottom: 2rem; font-size: 1.5rem;">Registrera ditt intresse</h4>
                     <form name="app-interest" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" style="display: flex; flex-direction: column; gap: 1.5rem;">
                         <input type="hidden" name="form-name" value="app-interest">
-                        <div style="display: none;">
-                            <label>Fyll inte i detta fält: <input name="bot-field"></label>
-                        </div>
+                        <div style="display: none;"><label>Fyll inte i: <input name="bot-field"></label></div>
                         
                         <div>
                             <label for="name" style="display: block; color: #4a6169; margin-bottom: 0.5rem; font-weight: 500;">Namn *</label>
-                            <input type="text" id="name" name="name" required 
-                                style="width: 100%; padding: 1rem; border: 2px solid #e0e0e0; border-radius: 10px; font-size: 1rem;">
+                            <input type="text" id="name" name="name" required style="width: 100%; padding: 1rem; border: 2px solid #e0e0e0; border-radius: 10px; font-size: 1rem;">
                         </div>
                         
                         <div>
                             <label for="email" style="display: block; color: #4a6169; margin-bottom: 0.5rem; font-weight: 500;">Email *</label>
-                            <input type="email" id="email" name="email" required 
-                                style="width: 100%; padding: 1rem; border: 2px solid #e0e0e0; border-radius: 10px; font-size: 1rem;">
+                            <input type="email" id="email" name="email" required style="width: 100%; padding: 1rem; border: 2px solid #e0e0e0; border-radius: 10px; font-size: 1rem;">
                         </div>
                         
                         <div>
                             <label for="phone" style="display: block; color: #4a6169; margin-bottom: 0.5rem; font-weight: 500;">Telefon (valfritt)</label>
-                            <input type="tel" id="phone" name="phone" 
-                                style="width: 100%; padding: 1rem; border: 2px solid #e0e0e0; border-radius: 10px; font-size: 1rem;">
+                            <input type="tel" id="phone" name="phone" style="width: 100%; padding: 1rem; border: 2px solid #e0e0e0; border-radius: 10px; font-size: 1rem;">
                         </div>
                         
                         <div>
-                            <label for="message" style="display: block; color: #4a6169; margin-bottom: 0.5rem; font-weight: 500;">Vad hoppas du få ut av appen? (valfritt)</label>
-                            <textarea id="message" name="message" rows="4" 
-                                style="width: 100%; padding: 1rem; border: 2px solid #e0e0e0; border-radius: 10px; font-size: 1rem; resize: vertical;"></textarea>
+                            <label for="message" style="display: block; color: #4a6169; margin-bottom: 0.5rem; font-weight: 500;">Vad hoppas du få ut av appen?</label>
+                            <textarea id="message" name="message" rows="4" style="width: 100%; padding: 1rem; border: 2px solid #e0e0e0; border-radius: 10px; font-size: 1rem; resize: vertical;"></textarea>
                         </div>
                         
                         <div style="display: flex; align-items: start; gap: 0.5rem;">
-                            <input type="checkbox" id="newsletter" name="newsletter" value="yes"
-                                style="margin-top: 0.3rem; width: 18px; height: 18px; cursor: pointer;">
-                            <label for="newsletter" style="color: #5a6c7d; font-size: 0.95rem; cursor: pointer;">
-                                Ja, jag vill få uppdateringar om Tryggman och tips om psykisk hälsa
-                            </label>
+                            <input type="checkbox" id="newsletter" name="newsletter" value="yes" style="margin-top: 0.3rem; width: 18px; height: 18px; cursor: pointer;">
+                            <label for="newsletter" style="color: #5a6c7d; font-size: 0.95rem; cursor: pointer;">Ja, jag vill få uppdateringar om Tryggman</label>
                         </div>
                         
-                        <button type="submit" style="width: 100%; padding: 1.2rem 3rem; background: linear-gradient(135deg, #e8a87c 0%, #d4956a 100%); color: white; border: none; border-radius: 50px; font-weight: bold; font-size: 1.1rem; cursor: pointer; transition: all 0.3s; box-shadow: 0 4px 15px rgba(232, 168, 124, 0.3);">
-                            Registrera mitt intresse 🚀
-                        </button>
+                        <button type="submit" style="width: 100%; padding: 1.2rem 3rem; background: linear-gradient(135deg, #e8a87c 0%, #d4956a 100%); color: white; border: none; border-radius: 50px; font-weight: bold; font-size: 1.1rem; cursor: pointer; transition: all 0.3s; box-shadow: 0 4px 15px rgba(232, 168, 124, 0.3);">Registrera mitt intresse 🚀</button>
                     </form>
                 </div>
-
-                <p style="text-align: center; margin-top: 2rem; font-size: 0.95rem; opacity: 0.9;">
-                    Vi respekterar din integritet. Din information används endast för att kontakta dig om appen 
-                    och delas aldrig med tredje part.
-                </p>
             </div>
         </div>
     </section>
 
     <section id="sponsorer">
         <h2>Våra Sponsorer & Partners</h2>
-        <p class="intro-text">
-            Vi är stolta över att samarbeta med organisationer som delar vår vision om bättre 
-            psykisk hälsa för män.
-        </p>
+        <p class="intro-text">Vi är stolta över att samarbeta med organisationer som delar vår vision.</p>
         <div style="text-align: center; margin-top: 4rem;">
             <p style="color: #5a6c7d; font-size: 1.1rem;">Sponsorer kommer snart...</p>
         </div>
@@ -621,9 +334,7 @@
 
     <section id="resurser">
         <h2>Resurser & Hjälp</h2>
-        <p class="intro-text">
-            Det är okej att inte må bra. Det är okej att be om hjälp. Här hittar du viktiga resurser.
-        </p>
+        <p class="intro-text">Det är okej att inte må bra. Det är okej att be om hjälp.</p>
         <div class="info-grid">
             <div class="info-card">
                 <h3>Mind Självmordslinjen</h3>
@@ -633,7 +344,7 @@
             <div class="info-card">
                 <h3>1177 Vårdguiden</h3>
                 <p><strong style="color: #e8a87c;">Telefon: 1177</strong></p>
-                <p>Sjuksköterskor som ger råd och hänvisar vidare vid behov.</p>
+                <p>Sjuksköterskor som ger råd dygnet runt.</p>
             </div>
             <div class="info-card">
                 <h3>BRIS för vuxna</h3>
@@ -645,18 +356,27 @@
 
     <section id="kontakt" class="section-warm">
         <h2>Kontakta oss</h2>
-        <p class="intro-text">
-            Vill du veta mer om Tryggman eller vår app? Har du frågor eller feedback? Hör av dig!
-        </p>
-        <p style="text-align: center; font-size: 1.2rem; color: #4a6169;">
-            <strong>Email:</strong> info@tryggman.se
-        </p>
+        <p class="intro-text">Vill du veta mer om Tryggman? Har du frågor eller feedback? Hör av dig!</p>
+        <p style="text-align: center; font-size: 1.2rem; color: #4a6169;"><strong>Email:</strong> info@tryggman.se</p>
+        
+        <div class="social-links">
+            <a href="https://www.tiktok.com/@tryggman.se?_r=1&_t=ZN-92zCOLJj83K" target="_blank" rel="noopener" title="Följ oss på TikTok">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/></svg>
+            </a>
+        </div>
     </section>
 
     <footer>
         <p>&copy; 2026 Tryggman. Där trygghet skapas.</p>
         <p style="margin-top: 1rem; opacity: 0.8;">Tillsammans bryter vi tystnaden kring mäns psykiska hälsa.</p>
     </footer>
+
+    <div id="articleModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div id="modalArticleContent"></div>
+        </div>
+    </div>
 
     <script>
       if (window.netlifyIdentity) {
@@ -667,6 +387,104 @@
             });
           }
         });
+      }
+
+      const modal = document.getElementById('articleModal');
+      const modalContent = document.getElementById('modalArticleContent');
+      const closeBtn = document.getElementsByClassName('close')[0];
+
+      const articles = {
+        '1': {
+          title: '5 tecken på att du behöver prata med någon',
+          content: `<h2>5 tecken på att du behöver prata med någon</h2>
+            <p>Många män ignorerar varningssignaler för psykisk ohälsa tills det är för sent. Här är fem viktiga tecken som visar att det är dags att söka stöd:</p>
+            <h3>1. Du känner dig konstant trött och omotiverad</h3>
+            <p>Om du har svårt att ta dig ur sängen på morgonen, känner dig uttröttad trots tillräcklig sömn, och har förlorat intresset för saker du tidigare tyckte om, kan det vara ett tecken på depression.</p>
+            <h3>2. Du isolerar dig från vänner och familj</h3>
+            <p>När du börjar dra dig undan sociala sammanhang, avböjer inbjudningar och undviker människor kan det vara ett varningssignal. Isolering förvärrar ofta psykisk ohälsa.</p>
+            <h3>3. Dina sömnvanor har förändrats drastiskt</h3>
+            <p>Antingen sover du för mycket eller för lite. Insomningsproblem, vaknar mitt i natten med ångest, eller sover hela dagarna kan alla vara tecken.</p>
+            <h3>4. Du använder alkohol eller andra substanser för att må bättre</h3>
+            <p>Om du märker att du dricker mer för att hantera stress, använder droger för att "slappna av", eller är beroende av substanser för att fungera socialt, är det definitivt dags att prata med någon.</p>
+            <h3>5. Du har tankar om att skada dig själv</h3>
+            <p>Om du har tankar om självmord eller att skada dig själv, sök hjälp omedelbart. Ring 112, 90101 eller någon annan krislinje. Detta är inte något att skämmas för - det är en medicinsk nödsituation.</p>
+            <p style="margin-top: 2rem; padding: 1.5rem; background: #fff3cd; border-radius: 10px;"><strong>Kom ihåg:</strong> Att söka hjälp är ett tecken på styrka, inte svaghet. Ju tidigare du pratar med någon, desto lättare blir det att få hjälp.</p>`
+        },
+        '2': {
+          title: 'Mindfulness för män - så kommer du igång',
+          content: `<h2>Mindfulness för män - så kommer du igång</h2>
+            <p>Mindfulness behöver inte vara komplicerat eller "flummigt". Här är en praktisk guide för att komma igång.</p>
+            <h3>Vad är mindfulness egentligen?</h3>
+            <p>Mindfulness handlar om att vara närvarande i nuet, utan att döma. Det är ett verktyg för att träna din hjärna att hantera stress, ångest och negativa tankar bättre.</p>
+            <h3>Varför är det bra för män?</h3>
+            <p>Forskning visar att mindfulness kan hjälpa män att:</p>
+            <ul>
+              <li>Hantera stress och ångest bättre</li>
+              <li>Förbättra koncentration och fokus</li>
+              <li>Reglera känslor mer effektivt</li>
+              <li>Sova bättre</li>
+              <li>Minska impulsivitet</li>
+            </ul>
+            <h3>Kom igång på 5 minuter</h3>
+            <p><strong>Övning 1: Andningsmeditation</strong></p>
+            <ol>
+              <li>Sätt dig bekvämt (ingen lotus-position behövs!)</li>
+              <li>Stäng ögonen eller titta ner i golvet</li>
+              <li>Andas in genom näsan, räkna till 4</li>
+              <li>Håll andan, räkna till 4</li>
+              <li>Andas ut genom munnen, räkna till 6</li>
+              <li>Upprepa i 5 minuter</li>
+            </ol>
+            <p style="margin-top: 2rem;"><strong>Tips:</strong> Börja med bara 5 minuter om dagen. Det är bättre att göra lite regelbundet än mycket sällan.</p>`
+        },
+        '3': {
+          title: '"Jag var inte ensam - min historia"',
+          content: `<h2>"Jag var inte ensam - min historia"</h2>
+            <p style="font-style: italic;">Johan, 42 år, delar sin resa från depression till återhämtning.</p>
+            <h3>Mörkret</h3>
+            <p>För tre år sedan var jag på botten. Jag hade allt på papperet - bra jobb, familj, hus - men inombords var jag tom. Varje dag kände som en pina. Jag kunde inte glädjas åt någonting längre.</p>
+            <p>Jag började dricka mer. Först ett glas vin till middag, sen två, sen en flaska. Det var det enda som gjorde att jag kunde slappna av. Men nästa morgon var ångesten värre än någonsin.</p>
+            <h3>Vändpunkten</h3>
+            <p>En dag på jobbet började jag gråta på toaletten. Jag kunde inte sluta. Min chef knackade på dörren och frågade om jag var okej. Jag sa att jag var det, men han köpte det inte.</p>
+            <p>Han tog mig åt sidan och sa: "Johan, jag har märkt att du inte mår bra. Och det är okej. Men du behöver prata med någon." Han berättade att han själv hade gått i terapi för sin depression.</p>
+            <h3>Vägen tillbaka</h3>
+            <p>Jag började gå i terapi. De första sessionerna var tuffa - att prata om känslor var helt främmande för mig. Men terapeuten var tålmodig. Hon hjälpte mig förstå varför jag mådde som jag gjorde.</p>
+            <p>Jag lärde mig att:</p>
+            <ul>
+              <li>Mina känslor var giltiga, inte tecken på svaghet</li>
+              <li>Depression är en sjukdom, inte ett personlighetsdrag</li>
+              <li>Att be om hjälp krävde mer mod än att fortsätta lida i tystnad</li>
+              <li>Jag var inte ensam - miljontals män känner likadant</li>
+            </ul>
+            <h3>Idag</h3>
+            <p>Jag mår inte perfekt varje dag. Men jag har verktygen för att hantera mina känslor nu. Jag pratar med min fru om hur jag mår. Jag går fortfarande i terapi ibland. Och jag dricker inte längre för att fly från mina problem.</p>
+            <p style="margin-top: 2rem; padding: 1.5rem; background: #e8f5e9; border-radius: 10px;"><strong>Till dig som läser detta:</strong> Om du känner igen dig, vänta inte. Prata med någon. Ring en vän, kontakta en terapeut, ring en krislinje. Du förtjänar att må bra. Och det finns hjälp att få.</p>`
+        }
+      };
+
+      document.querySelectorAll('.article-link').forEach(link => {
+        link.addEventListener('click', function(e) {
+          e.preventDefault();
+          const articleId = this.getAttribute('data-article');
+          const article = articles[articleId];
+          if (article) {
+            modalContent.innerHTML = article.content;
+            modal.style.display = 'block';
+            document.body.style.overflow = 'hidden';
+          }
+        });
+      });
+
+      closeBtn.onclick = function() {
+        modal.style.display = 'none';
+        document.body.style.overflow = 'auto';
+      }
+
+      window.onclick = function(event) {
+        if (event.target == modal) {
+          modal.style.display = 'none';
+          document.body.style.overflow = 'auto';
+        }
       }
     </script>
 </body>
