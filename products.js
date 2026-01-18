@@ -4,17 +4,17 @@ function buyProduct(productId) {
     const products = {
         tshirt: {
             name: 'Tryggman T-shirt',
-            price: 299,
+            price: 129,
             sizes: ['S', 'M', 'L', 'XL', 'XXL']
         },
         cap: {
             name: 'Tryggman Keps',
-            price: 249,
+            price: 199,
             sizes: ['One size']
         },
         hoodie: {
             name: 'Tryggman Hoodie',
-            price: 499,
+            price: 299,
             sizes: ['S', 'M', 'L', 'XL', 'XXL']
         },
         mug: {
@@ -24,18 +24,30 @@ function buyProduct(productId) {
         },
         zip: {
             name: 'Tryggman Ziptröja',
-            price: 549,
+            price: 349,
             sizes: ['S', 'M', 'L', 'XL', 'XXL']
         }
     };
     
     const product = products[productId];
     
+    if (!product) {
+        alert('Produkt ej hittad');
+        return;
+    }
+    
     // Visa storlek-val om flera storlekar
     let size = '';
     if (product.sizes.length > 1) {
-        size = prompt(`Välj storlek för ${product.name}:\n${product.sizes.join(', ')}`);
-        if (!size || !product.sizes.includes(size.toUpperCase())) {
+        size = prompt(`Välj storlek för ${product.name}:\n\n${product.sizes.join(', ')}\n\nSkriv din storlek:`);
+        
+        if (!size) {
+            return; // Användaren avbröt
+        }
+        
+        size = size.toUpperCase().trim();
+        
+        if (!product.sizes.includes(size)) {
             alert('Ogiltig storlek. Försök igen.');
             return;
         }
@@ -45,20 +57,22 @@ function buyProduct(productId) {
     
     // Bekräfta köp
     const confirmed = confirm(
-        `Beställning:\n\n` +
-        `${product.name}\n` +
+        `📦 BESTÄLLNING\n\n` +
+        `Produkt: ${product.name}\n` +
         `Storlek: ${size}\n` +
         `Pris: ${product.price} kr\n\n` +
-        `Klicka OK för att gå till betalning`
+        `Klicka OK för att skicka beställning via email`
     );
     
     if (confirmed) {
-        // TILLFÄLLIG LÖSNING: Email
-        // Senare: Stripe payment link
-        const email = 'order@tryggman.se'; // Byt till din email
+        // Skapa email-beställning
+        const email = 'kontakt@tryggman.se';
         const subject = `Beställning: ${product.name}`;
-        const body = `Jag vill beställa:\n\nProdukt: ${product.name}\nStorlek: ${size}\nPris: ${product.price} kr\n\nMina uppgifter:\nNamn: \nAdress: \nPostnummer och ort: \nTelefon: \n\nBetalsätt: [Swish/Kortbetalning]`;
+        const body = `Hej Tryggman!\n\nJag vill beställa:\n\nProdukt: ${product.name}\nStorlek: ${size}\nPris: ${product.price} kr\n\n--- Mina uppgifter ---\nNamn: \nAdress: \nPostnummer: \nOrt: \nTelefon: \nEmail: \n\nBetalsätt: [Swish/Kortbetalning]\n\nMvh`;
         
+        // Öppna email-klient
         window.location.href = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     }
 }
+
+console.log('Products.js loaded successfully!');
